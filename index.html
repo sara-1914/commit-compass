@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="CommitCompass is a polished public GitHub profile explorer for curious developers.">
+  <title>CommitCompass — GitHub Profile Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✳</span> commit<span>compass</span></a>
+    <div class="top-note"><i></i> PUBLIC GITHUB EXPLORER</div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">A BETTER WAY TO EXPLORE OPEN SOURCE</div>
+      <h1>Find the signal<br>in the <em>code.</em></h1>
+      <p class="intro">Explore a developer’s public GitHub profile, discover their projects, and get a quick snapshot of the languages they use — all in one calm, focused dashboard.</p>
+      <form id="search-form" class="search">
+        <span class="search-symbol">⌕</span>
+        <label class="sr-only" for="username">GitHub username</label>
+        <input id="username" name="username" placeholder="Enter a GitHub username (e.g. torvalds)" required autocomplete="off">
+        <button id="search-button" type="submit">Explore profile <span>↗</span></button>
+      </form>
+      <p class="microcopy">NO LOGIN REQUIRED <b>·</b> PUBLIC API <b>·</b> FREE TO USE</p>
+      <div id="error" class="error" role="alert" hidden></div>
+    </section>
+
+    <section id="dashboard" hidden>
+      <article class="profile panel">
+        <div class="profile-main">
+          <img id="avatar" class="avatar" alt="GitHub avatar">
+          <div class="profile-info">
+            <div class="name-line"><h2 id="name">Developer</h2><span class="pill">PROFILE</span></div>
+            <a id="handle" class="handle" target="_blank" rel="noreferrer"></a>
+            <p id="bio" class="bio"></p>
+            <div class="meta"><span id="location"></span><span id="company"></span><span id="joined"></span></div>
+          </div>
+        </div>
+        <a id="profile-link" class="outline-link" target="_blank" rel="noreferrer">View on GitHub ↗</a>
+      </article>
+
+      <div class="stats">
+        <article class="stat panel"><label>PUBLIC REPOSITORIES</label><strong id="repo-count">—</strong><small>Projects shared publicly</small></article>
+        <article class="stat panel"><label>FOLLOWERS</label><strong id="followers">—</strong><small>Community reach</small></article>
+        <article class="stat panel"><label>FOLLOWING</label><strong id="following">—</strong><small>Developer network</small></article>
+        <article class="stat panel"><label>STARS FOUND</label><strong id="stars">—</strong><small>Across loaded repositories</small></article>
+      </div>
+
+      <div class="two-col">
+        <section class="panel section">
+          <div class="section-head"><div><label>01 / STACK SNAPSHOT</label><h3>Languages in the wild</h3></div><span class="decor">◉</span></div>
+          <p class="subtext">A rough breakdown of languages reported by the public repositories loaded below.</p>
+          <div id="languages" class="languages"><p class="muted">Loading languages…</p></div>
+        </section>
+        <section class="panel section">
+          <div class="section-head"><div><label>02 / QUICK READ</label><h3>Profile signals</h3></div><span class="decor">↗</span></div>
+          <div class="signal"><span>✦</span><div><strong id="signal-title">Reading profile…</strong><p id="signal-copy">Collecting public profile details.</p></div></div>
+          <div class="signal"><span>⌘</span><div><strong id="project-title">Project mix</strong><p id="project-copy">Checking repositories and stars.</p></div></div>
+          <div class="signal"><span>◎</span><div><strong>Context matters</strong><p>These are public metadata signals, not a score of someone’s skill or code quality.</p></div></div>
+        </section>
+      </div>
+
+      <section class="panel section repo-section">
+        <div class="section-head"><div><label>03 / PROJECT SHELF</label><h3>Repositories worth a look</h3></div><span id="repo-total" class="repo-total">0 PROJECTS</span></div>
+        <div class="filters">
+          <input id="filter" placeholder="Filter by repository name or description…" aria-label="Filter repositories">
+          <select id="sort" aria-label="Sort repositories">
+            <option value="stars">Most starred</option><option value="updated">Recently updated</option><option value="name">Name A–Z</option>
+          </select>
+        </div>
+        <div id="repo-list" class="repo-list"></div>
+        <button id="load-more" class="load-more" hidden>Load more repositories ↓</button>
+      </section>
+      <p class="footnote">Data is provided by GitHub’s public API and may be affected by rate limits. <button id="reset" class="link-button">Explore another profile ↗</button></p>
+    </section>
+
+    <section id="empty-state" class="empty-state">
+      <div class="orbital"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="core">⌘</div><b>✦</b><i>✧</i></div>
+      <h3>A developer profile is a story.</h3>
+      <p>Enter a GitHub username to start reading between the commits.</p>
+    </section>
+  </main>
+  <footer><span>COMMITCOMPASS © 2026</span><span>MADE FOR CURIOUS DEVELOPERS <b>♥</b></span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
